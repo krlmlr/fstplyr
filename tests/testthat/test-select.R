@@ -8,4 +8,5 @@ test_that("can select", {
   expect_identical(tbl %>% select(-Species) %>% collect(), tbl %>% collect() %>% select(-Species))
   expect_identical(tbl %>% select(Species) %>% head() %>% collect(), tbl %>% collect() %>% select(Species) %>% head())
   expect_identical(tbl %>% select() %>% collect(), tbl %>% collect() %>% select())
+  expect_identical(tbl %>% select(a = Species) %>% collect(), tbl %>% collect() %>% select(a = Species))
 })

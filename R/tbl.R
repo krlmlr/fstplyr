@@ -52,6 +52,12 @@ read_from_meta <- function(x, slice = NULL) {
     data <- read_fst(x$meta$path, from = start, to = end, columns = vars)
     data <- data[slice - (start - 1L), , drop = FALSE]
   }
+
+  if (!is.null(names(vars))) {
+    new_names_idx <- which(names(vars) != "")
+    names(data)[new_names_idx] <- names(vars)[new_names_idx]
+  }
+
   as_tibble(data)
 }
 

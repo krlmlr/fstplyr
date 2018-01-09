@@ -8,17 +8,8 @@
 \description{
 Provides a basic 'dplyr' interface to 'fst' data sources.
 }
-\details{
-Work in progress.
-}
 \seealso{
-Useful links:
-\itemize{
-  \item \url{https://github.com/krlmlr/fstplyr}
-  \item \url{http://krlmlr.github.io/fstplyr}
-  \item Report bugs at \url{https://github.com/krlmlr/fstplyr/issues}
-}
-
+\code{\link[=src_fst]{src_fst()}}
 }
 \author{
 \strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}

@@ -20,5 +20,6 @@ fst::write_fst(iris, file.path(path, "iris.fst"))
 fst::write_fst(mtcars, file.path(path, "mtcars"))
 
 src <- src_fst(path)
+src
 tbl(src, "mtcars")
 }

@@ -1,5 +1,4 @@
-#' @details
-#' Work in progress.
+#' @seealso [src_fst()]
 #' @import fst
 #' @import dplyr
 #' @import rlang

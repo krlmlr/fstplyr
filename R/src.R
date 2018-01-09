@@ -13,6 +13,7 @@
 #' fst::write_fst(mtcars, file.path(path, "mtcars"))
 #'
 #' src <- src_fst(path)
+#' src
 #' tbl(src, "mtcars")
 src_fst <- function(path) {
   stopifnot(dir.exists(path))

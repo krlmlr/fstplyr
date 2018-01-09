@@ -1,0 +1,14 @@
+Package: fstplyr
+Title: A 'dplyr' Interface to 'fst'
+Version: 0.0-0
+Authors@R: person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
+Description: Provides a basic 'dplyr' interface to 'fst' data sources.
+Imports: 
+    fst
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Date: 2018-01-09
+BugReports: https://github.com/krlmlr/fstplyr/issues
+URL: https://github.com/krlmlr/fstplyr, http://krlmlr.github.io/fstplyr
+Roxygen: list(markdown = TRUE)

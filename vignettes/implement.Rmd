@@ -49,3 +49,18 @@ I had to implement:
 ## Result
 
 So far, only `select()` and `rename()` are more efficient than working on data frames. Implementing better versions of the other verbs is now only a matter of diligence. In particular, `slice()` and `filter()` should be fairly easy to implement, the latter perhaps with the help of the [*bindr*](https://krlmlr.github.io/bindr/) package.
+
+I have no idea why `R CMD check` currently gives me S3 method consistency headaches, but I'm pretty sure this is fixable:
+
+```
+checking S3 generic/method consistency ... WARNING
+Warning: declared S3 method 'filter.tbl_fst' not found
+Warning: declared S3 method 'intersect.tbl_fst' not found
+Warning: declared S3 method 'setdiff.tbl_fst' not found
+Warning: declared S3 method 'setequal.tbl_fst' not found
+Warning: declared S3 method 'union.tbl_fst' not found
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
+R CMD check results
+0 errors | 1 warning  | 0 notes
+```

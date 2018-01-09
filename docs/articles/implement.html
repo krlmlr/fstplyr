@@ -49,6 +49,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">News</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -103,6 +106,17 @@
 <h2 class="hasAnchor">
 <a href="#result" class="anchor"></a>Result</h2>
 <p>So far, only <code>select()</code> and <code>rename()</code> are more efficient than working on data frames. Implementing better versions of the other verbs is now only a matter of diligence. In particular, <code>slice()</code> and <code>filter()</code> should be fairly easy to implement, the latter perhaps with the help of the <a href="https://krlmlr.github.io/bindr/"><em>bindr</em></a> package.</p>
+<p>I have no idea why <code>R CMD check</code> currently gives me S3 method consistency headaches, but I’m pretty sure this is fixable:</p>
+<pre><code>checking S3 generic/method consistency ... WARNING
+Warning: declared S3 method 'filter.tbl_fst' not found
+Warning: declared S3 method 'intersect.tbl_fst' not found
+Warning: declared S3 method 'setdiff.tbl_fst' not found
+Warning: declared S3 method 'setequal.tbl_fst' not found
+Warning: declared S3 method 'union.tbl_fst' not found
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
+R CMD check results
+0 errors | 1 warning  | 0 notes</code></pre>
 </div>
 </div>
   </div>

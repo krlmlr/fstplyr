@@ -34,7 +34,8 @@ fst::write_fst(mtcars, file.path(path, "mtcars"))
 library(fstplyr)
 src <- src_fst(path)
 src
-dplyr::tbl(src, "mtcars")
+tbl(src, "mtcars") %>%
+  select(mpg:wt, -drat, gear)
 ```
 
 ## Installation

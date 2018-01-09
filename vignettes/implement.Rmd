@@ -63,6 +63,9 @@ I had to implement:
 
     Reexporting these methods came with the additional benefits of warning about argument name mismatch, and also allows working only with loading *fstplyr*, so I decided to reexport all *dplyr* methods.
 
+10. Finally, I reexported the pipe operator `%>%`, just for completeness and to simplify the examples.
+
+
 ## Result
 
 So far, only `head()`, `select()`, and `rename()` are more efficient than working on data frames. Implementing versions of the other verbs that operate directly on the `.fst` file is now only a matter of diligence. In particular, `slice()` and `filter()` should be fairly easy to implement, the latter perhaps with the help of the [*bindr*](https://krlmlr.github.io/bindr/) package.

@@ -3,6 +3,8 @@
 fstplyr
 =======
 
+[![Travis-CI Build Status](https://travis-ci.org/krlmlr/fstplyr.svg?branch=master)](https://travis-ci.org/krlmlr/fstplyr) [![Coverage status](https://codecov.io/gh/krlmlr/fstplyr/branch/master/graph/badge.svg)](https://codecov.io/github/krlmlr/fstplyr?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/fstplyr)](https://cran.r-project.org/package=fstplyr)
+
 Provides a simple yet complete [dplyr](http://dplyr.tidyverse.org/) interface to [fst](http://www.fstpackage.org/) files. Currently only `select()` and `head()` make use of fst's superior performance, all other methods offload to the default data frame implementation. The data is always returned as a [tibble](http://tibble.tidyverse.org/).
 
 Example
@@ -17,7 +19,7 @@ fst::write_fst(mtcars, file.path(path, "mtcars"))
 library(fstplyr)
 src <- src_fst(path)
 src
-#> src:  fst files in /tmp/Rtmp9e4Eiy/file32fd14c5a40d
+#> src:  fst files in /tmp/Rtmpn8Y1MJ/file3ce92b2da677
 #> tbls: iris, mtcars
 dplyr::tbl(src, "mtcars")
 #> # A tibble: 32 x 11

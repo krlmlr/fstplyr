@@ -80,6 +80,7 @@
 <div id="fstplyr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#fstplyr" class="anchor"></a>fstplyr</h1></div>
+
 <p>Provides a simple yet complete <a href="http://dplyr.tidyverse.org/">dplyr</a> interface to <a href="http://www.fstpackage.org/">fst</a> files. Currently only <code>select()</code> and <code>head()</code> make use of fst’s superior performance, all other methods offload to the default data frame implementation. The data is always returned as a <a href="http://tibble.tidyverse.org/">tibble</a>.</p>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -92,7 +93,7 @@ fst<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation
 <span class="kw">library</span>(fstplyr)
 src &lt;-<span class="st"> </span><span class="kw"><a href="reference/src_fst.html">src_fst</a></span>(path)
 src
-<span class="co">#&gt; src:  fst files in /tmp/RtmpF5kdvA/file3347535ae8ce</span>
+<span class="co">#&gt; src:  fst files in /tmp/RtmpglIqVq/file3d042275f7a</span>
 <span class="co">#&gt; tbls: iris, mtcars</span>
 dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span>(src, <span class="st">"mtcars"</span>)
 <span class="co">#&gt; # A tibble: 32 x 11</span>
@@ -134,6 +135,12 @@ remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumenta
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Kirill Müller <br><small class="roles"> Author, maintainer </small> </li>
+</ul>
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://travis-ci.org/krlmlr/fstplyr"><img src="https://travis-ci.org/krlmlr/fstplyr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://codecov.io/github/krlmlr/fstplyr?branch=master"><img src="https://codecov.io/gh/krlmlr/fstplyr/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://cran.r-project.org/package=fstplyr"><img src="http://www.r-pkg.org/badges/version/fstplyr" alt="CRAN status"></a></li>
 </ul>
 </div>
 

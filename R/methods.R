@@ -16,11 +16,13 @@ do.tbl_fst <- function(.data, ...) {
   do(collect(.data), ...)
 }
 
+#' @importFrom dplyr filter
 #' @export
 filter.tbl_fst <- function(.data, ...) {
   filter(collect(.data), ...)
 }
 
+#' @importFrom dplyr intersect
 #' @export
 intersect.tbl_fst <- function(.data, ...) {
   intersect(collect(.data), ...)
@@ -46,11 +48,13 @@ sample_n.tbl_fst <- function(.data, ...) {
   sample_n(collect(.data), ...)
 }
 
+#' @importFrom dplyr setdiff
 #' @export
 setdiff.tbl_fst <- function(.data, ...) {
   setdiff(collect(.data), ...)
 }
 
+#' @importFrom dplyr setequal
 #' @export
 setequal.tbl_fst <- function(.data, ...) {
   setequal(collect(.data), ...)
@@ -66,6 +70,7 @@ summarise.tbl_fst <- function(.data, ...) {
   summarise(collect(.data), ...)
 }
 
+#' @importFrom dplyr union
 #' @export
 union.tbl_fst <- function(.data, ...) {
   union(collect(.data), ...)
@@ -167,11 +172,6 @@ compute.tbl_fst <- function(.data, ...) {
 
 
 # Internal ----------------------------------------------------------------
-
-#' @export
-default_missing.tbl_fst <- function(.data, ...) {
-  rep(NA, nrow(x))
-}
 
 #' @export
 same_src.src_fst <- function(x, y, ...) {

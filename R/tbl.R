@@ -58,7 +58,7 @@ read_from_meta <- function(x, slice = NULL) {
     names(data)[new_names_idx] <- names(vars)[new_names_idx]
   }
 
-  as_tibble(data)
+  tibble::as_tibble(data)
 }
 
 empty_tibble <- function(nrow) {

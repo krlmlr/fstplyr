@@ -21,5 +21,5 @@ fst::write_fst(mtcars, file.path(path, "mtcars"))
 
 src <- src_fst(path)
 src
-tbl(src, "mtcars")
+dplyr::tbl(src, "mtcars")
 }

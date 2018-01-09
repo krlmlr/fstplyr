@@ -14,7 +14,7 @@
 #'
 #' src <- src_fst(path)
 #' src
-#' tbl(src, "mtcars")
+#' dplyr::tbl(src, "mtcars")
 src_fst <- function(path) {
   stopifnot(dir.exists(path))
   path <- normalizePath(path, mustWork = TRUE)

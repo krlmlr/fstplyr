@@ -25,12 +25,16 @@ collect.tbl_fst <- function(x, ...) {
 }
 
 read_from_meta <- function(x, slice = NULL, vars = NULL) {
+  if (is.null(vars)) {
+    vars = x$meta$columnNames
+  }
+
   if (is.null(slice)) {
-    data <- read_fst(x$meta$path)
+    data <- read_fst(x$meta$path, columns = vars)
   } else {
     start <- min(slice)
     end <- max(slice)
-    data <- read_fst(x$meta$path, from = start, to = end)
+    data <- read_fst(x$meta$path, from = start, to = end, columns = vars)
     data <- data[slice - (start - 1L), ]
   }
   as_tibble(data)

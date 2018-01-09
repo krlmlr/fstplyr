@@ -1,4 +1,4 @@
-# fstplyr 0.1-0
+# fstplyr 0.1
 
 Initial version.
 

@@ -1,6 +1,6 @@
 Package: fstplyr
 Title: A 'dplyr' Interface to 'fst'
-Version: 0.1-0
+Version: 0.1
 Authors@R: person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
 Description: Provides a basic 'dplyr' interface to 'fst' data sources.
 Imports:

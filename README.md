@@ -17,7 +17,7 @@ fst::write_fst(mtcars, file.path(path, "mtcars"))
 library(fstplyr)
 src <- src_fst(path)
 src
-#> src:  fst files in /tmp/RtmpzRhQR7/file1fa97c52fcde
+#> src:  fst files in /tmp/RtmpaQCco0/file230872fadfd7
 #> tbls: iris, mtcars
 dplyr::tbl(src, "mtcars")
 #> # A tibble: 32 x 11
@@ -34,4 +34,12 @@ dplyr::tbl(src, "mtcars")
 #>  9  22.8  4.00   141  95.0  3.92  3.15  22.9  1.00  0     4.00  2.00
 #> 10  19.2  6.00   168 123    3.92  3.44  18.3  1.00  0     4.00  4.00
 #> # ... with 22 more rows
+```
+
+Installation
+------------
+
+``` r
+# install.packages("remotes")
+remotes::install_github("krlmlr/fstplyr")
 ```

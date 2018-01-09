@@ -32,3 +32,10 @@ src <- src_fst(path)
 src
 dplyr::tbl(src, "mtcars")
 ```
+
+## Installation
+
+```r
+# install.packages("remotes")
+remotes::install_github("krlmlr/fstplyr")
+```

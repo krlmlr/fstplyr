@@ -1,0 +1,51 @@
+---
+title: "Impementing a dplyr backend from scratch"
+author: "Kirill Müller"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Accessing fst files with dplyr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The timings for the [*fst*](http://www.fstpackage.org/) package looked *very* promising, and I decided to give it a try. When I found out that date-time values are stored, I was sold: I decided to use *fst* instead of SQLite as a storage for medium-sized intermediate data. At the same time I wanted to keep using [*dplyr*](http://dplyr.tidyverse.org/) verbs to access the data.
+
+A dplyr interface is [scheduled](https://github.com/fstpackage/fst/issues/108) for fst 0.9.0, but I didn't want to wait that long. I decided to implement the bare minimum that was necessary to grab columns of my choice from a `.fst` file, and perhaps allow easy access to all `.fst` files in a directory. The result is version 0.1 of the *fstplyr* package.
+
+## Recipe
+
+I had to implement:
+
+1. A constructor, `src_fst()`, that accepts a `path` to an existing directory. (This is the only exported function.) This function calls `dplyr::src(subclass = "fst")` (which really should be named `dplyr::new_src()`) and already collects the metadata of all `.fst` files. The function returns an object of class `"src_fst"`.
+
+2. The method `src_tbls.src_fst()`, which enumerates the tables in a source.
+
+3. The method `format.src_fst()` for nice formatting, borrowed code from *dbplyr*.
+
+4. The method `tbl.src_fst()` for opening a table, this method calls `dplyr::make_tbl(subclass = "fst")` (which again should be named `dplyr::new_tbl()`).  The function returns an object of class `"tbl_fst"` which contains the previously fetched metadata.
+
+5. Methods `head.tbl_fst()`, `dim.tbl_fst()` and later `dimnames.tbl_fst()` for displaying the data.
+
+6. A `collect.tbl_fst()` method for fetching the entire data frame. (The `head()` and `collect()` methods both call `fst::read_fst()`.)
+
+7. A `select.tbl_fst()` and `rename.tbl_fst()` method that return a `"tbl_fst"` object with a modified column list, computed with the help of the *tidyselect* package.
+
+8. All other dplyr methods for which a `data.frame` method exists, determined with
+
+    ```sh
+    grep S3method.*[^_],data.frame dplyr/NAMESPACE
+    ```
+
+    All these methods call `collect()` on the input and then the `data.frame()` version. This isn't foolproof nor fast, but should give a working implementation for most methods with very little effort.
+
+## Result
+
+So far, only `select()` and `rename()` are more efficient than working on data frames. Implementing better versions of the other verbs is now only a matter of diligence. In particular, `slice()` and `filter()` should be fairly easy to implement, the latter perhaps with the help of the [*bindr*](https://krlmlr.github.io/bindr/) package.

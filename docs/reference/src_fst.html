@@ -60,6 +60,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/implement.html">Impementing a dplyr backend from scratch</a>
+    </li>
+  </ul>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -107,7 +119,7 @@
 <span class='kw pkg'>fst</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/fst/topics/write_fst'>write_fst</a></span>(<span class='no'>mtcars</span>, <span class='fu'>file.path</span>(<span class='no'>path</span>, <span class='st'>"mtcars"</span>))
 
 <span class='no'>src</span> <span class='kw'>&lt;-</span> <span class='fu'>src_fst</span>(<span class='no'>path</span>)
-<span class='no'>src</span></div><div class='output co'>#&gt; src:  fst files in /tmp/Rtmp564P9o/file4a8e7829d2e0
+<span class='no'>src</span></div><div class='output co'>#&gt; src:  fst files in /tmp/Rtmp564P9o/file4a8e51206d91
 #&gt; tbls: iris, mtcars</div><div class='input'><span class='fu'>tbl</span>(<span class='no'>src</span>, <span class='st'>"mtcars"</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 11
 #&gt;      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;

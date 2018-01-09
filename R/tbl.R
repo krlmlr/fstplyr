@@ -35,7 +35,7 @@ read_from_meta <- function(x, slice = NULL, vars = NULL) {
     start <- min(slice)
     end <- max(slice)
     data <- read_fst(x$meta$path, from = start, to = end, columns = vars)
-    data <- data[slice - (start - 1L), ]
+    data <- data[slice - (start - 1L), , drop = FALSE]
   }
   as_tibble(data)
 }

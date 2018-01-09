@@ -3,7 +3,9 @@ tbl.src_fst <- function(src, name, ..., slice = NULL, vars = NULL) {
   if (!(name %in% src_tbls(src))) {
     stop("Table `", name, "` not found!", call. = FALSE)
   }
-  make_tbl("fst", meta = src$meta[[name]], slice = slice, vars = vars)
+
+  meta <- src$meta[[name]]
+  make_tbl("fst", meta = meta, slice = slice, vars = vars)
 }
 
 #' @importFrom utils head
@@ -15,13 +17,13 @@ head.tbl_fst <- function(x, n = 6L, ...) {
 #' @importFrom utils head
 #' @export
 dim.tbl_fst <- function(x) {
-  c(x$meta$nrOfRows, length(x$meta$columnNames))
+  c(x$meta$nrOfRows, length(orig_vars(x)))
 }
 
 #' @importFrom utils head
 #' @export
 dimnames.tbl_fst <- function(x) {
-  list(NULL, x$meta$columnNames)
+  list(NULL, new_vars(x))
 }
 
 #' @importFrom utils head
@@ -31,10 +33,7 @@ collect.tbl_fst <- function(x, ...) {
 }
 
 read_from_meta <- function(x, slice = NULL) {
-  vars <- x$vars
-  if (is.null(vars)) {
-    vars <- x$meta$columnNames
-  }
+  vars <- orig_vars(x)
 
   if (length(vars) == 0) {
     if (is.null(slice)) {
@@ -53,9 +52,10 @@ read_from_meta <- function(x, slice = NULL) {
     data <- data[slice - (start - 1L), , drop = FALSE]
   }
 
-  if (!is.null(names(vars))) {
-    new_names_idx <- which(names(vars) != "")
-    names(data)[new_names_idx] <- names(vars)[new_names_idx]
+  new_names <- new_vars(x)
+  if (!is.null(new_names)) {
+    new_names_idx <- which(new_names != vars)
+    names(data)[new_names_idx] <- new_names[new_names_idx]
   }
 
   tibble::as_tibble(data)
@@ -63,4 +63,17 @@ read_from_meta <- function(x, slice = NULL) {
 
 empty_tibble <- function(nrow) {
   tibble::new_tibble(list(), nrow = nrow)
+}
+
+orig_vars <- function(x) {
+  if (is.null(x$vars)) return(x$meta$columnNames)
+  unname(x$vars)
+}
+
+new_vars <- function(x) {
+  if (is.null(names(x$vars))) return(orig_vars(x))
+  new_names <- names(x$vars)
+  old_names_idx <- which(new_names == "")
+  new_names[old_names_idx] <- orig_vars(x)[old_names_idx]
+  new_names
 }

@@ -1,15 +1,15 @@
 #' @export
-tbl.src_fst <- function(src, name, ...) {
+tbl.src_fst <- function(src, name, ..., slice = NULL, vars = NULL) {
   if (!(name %in% src_tbls(src))) {
     stop("Table `", name, "` not found!", call. = FALSE)
   }
-  make_tbl("fst", meta = src$meta[[name]])
+  make_tbl("fst", meta = src$meta[[name]], slice = slice, vars = vars)
 }
 
 #' @importFrom utils head
 #' @export
 head.tbl_fst <- function(x, n = 6L, ...) {
-  as_tibble(read_fst(x$meta$path, to = n))
+  read_from_meta(x, slice = seq_len(n))
 }
 
 #' @importFrom utils head
@@ -21,5 +21,17 @@ dim.tbl_fst <- function(x) {
 #' @importFrom utils head
 #' @export
 collect.tbl_fst <- function(x, ...) {
-  as_tibble(read_fst(x$meta$path))
+  read_from_meta(x)
+}
+
+read_from_meta <- function(x, slice = NULL, vars = NULL) {
+  if (is.null(slice)) {
+    data <- read_fst(x$meta$path)
+  } else {
+    start <- min(slice)
+    end <- max(slice)
+    data <- read_fst(x$meta$path, from = start, to = end)
+    data <- data[slice - (start - 1L), ]
+  }
+  as_tibble(data)
 }

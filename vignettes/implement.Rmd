@@ -24,7 +24,7 @@ A dplyr interface is [scheduled](https://github.com/fstpackage/fst/issues/108) f
 
 I had to implement:
 
-1. A constructor, `src_fst()`, that accepts a `path` to an existing directory. (This is the only exported function.) This function calls `dplyr::src(subclass = "fst")` (which really should be named `dplyr::new_src()`) and already collects the metadata of all `.fst` files. The function returns an object of class `"src_fst"`.
+1. A constructor, `src_fst()`, that accepts a `path` to an existing directory. (This is the only exported function, apart from the functions reexported from *dplyr*.) This function calls `dplyr::src(subclass = "fst")` (which really should be named `dplyr::new_src()`) and already collects the metadata of all `.fst` files. The function returns an object of class `"src_fst"`.
 
 2. The method `src_tbls.src_fst()`, which enumerates the tables in a source.
 
@@ -46,21 +46,23 @@ I had to implement:
 
     All these methods call `collect()` on the input and then the `data.frame()` version. This isn't foolproof nor fast, but should give a working implementation for most methods with very little effort.
 
+9. Some methods had to be reexported from *dplyr* to get rid of a `R CMD check` warning (thanks to Davis Vaughan for the hint):
+
+    ```
+    checking S3 generic/method consistency ... WARNING
+    Warning: declared S3 method 'filter.tbl_fst' not found
+    Warning: declared S3 method 'intersect.tbl_fst' not found
+    Warning: declared S3 method 'setdiff.tbl_fst' not found
+    Warning: declared S3 method 'setequal.tbl_fst' not found
+    Warning: declared S3 method 'union.tbl_fst' not found
+    See section ‘Generic functions and methods’ in the ‘Writing R
+    Extensions’ manual.
+    R CMD check results
+    0 errors | 1 warning  | 0 notes
+    ```
+
+    Reexporting these methods came with the additional benefits of warning about argument name mismatch, and also allows working only with loading *fstplyr*, so I decided to reexport all *dplyr* methods.
+
 ## Result
 
-So far, only `select()` and `rename()` are more efficient than working on data frames. Implementing better versions of the other verbs is now only a matter of diligence. In particular, `slice()` and `filter()` should be fairly easy to implement, the latter perhaps with the help of the [*bindr*](https://krlmlr.github.io/bindr/) package.
-
-I have no idea why `R CMD check` currently gives me S3 method consistency headaches, but I'm pretty sure this is fixable:
-
-```
-checking S3 generic/method consistency ... WARNING
-Warning: declared S3 method 'filter.tbl_fst' not found
-Warning: declared S3 method 'intersect.tbl_fst' not found
-Warning: declared S3 method 'setdiff.tbl_fst' not found
-Warning: declared S3 method 'setequal.tbl_fst' not found
-Warning: declared S3 method 'union.tbl_fst' not found
-See section ‘Generic functions and methods’ in the ‘Writing R
-Extensions’ manual.
-R CMD check results
-0 errors | 1 warning  | 0 notes
-```
+So far, only `head()`, `select()`, and `rename()` are more efficient than working on data frames. Implementing versions of the other verbs that operate directly on the `.fst` file is now only a matter of diligence. In particular, `slice()` and `filter()` should be fairly easy to implement, the latter perhaps with the help of the [*bindr*](https://krlmlr.github.io/bindr/) package.

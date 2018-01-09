@@ -88,25 +88,20 @@
 <a href="#recipe" class="anchor"></a>Recipe</h2>
 <p>I had to implement:</p>
 <ol style="list-style-type: decimal">
-<li><p>A constructor, <code><a href="../reference/src_fst.html">src_fst()</a></code>, that accepts a <code>path</code> to an existing directory. (This is the only exported function.) This function calls <code><a href="http://dplyr.tidyverse.org/reference/src.html">dplyr::src(subclass = "fst")</a></code> (which really should be named <code>dplyr::new_src()</code>) and already collects the metadata of all <code>.fst</code> files. The function returns an object of class <code>"src_fst"</code>.</p></li>
+<li><p>A constructor, <code><a href="../reference/src_fst.html">src_fst()</a></code>, that accepts a <code>path</code> to an existing directory. (This is the only exported function, apart from the functions reexported from <em>dplyr</em>.) This function calls <code><a href="http://dplyr.tidyverse.org/reference/src.html">dplyr::src(subclass = "fst")</a></code> (which really should be named <code>dplyr::new_src()</code>) and already collects the metadata of all <code>.fst</code> files. The function returns an object of class <code>"src_fst"</code>.</p></li>
 <li><p>The method <code>src_tbls.src_fst()</code>, which enumerates the tables in a source.</p></li>
 <li><p>The method <code>format.src_fst()</code> for nice formatting, borrowed code from <em>dbplyr</em>.</p></li>
 <li><p>The method <code>tbl.src_fst()</code> for opening a table, this method calls <code><a href="http://dplyr.tidyverse.org/reference/make_tbl.html">dplyr::make_tbl(subclass = "fst")</a></code> (which again should be named <code>dplyr::new_tbl()</code>). The function returns an object of class <code>"tbl_fst"</code> which contains the previously fetched metadata.</p></li>
 <li><p>Methods <code>head.tbl_fst()</code>, <code>dim.tbl_fst()</code> and later <code>dimnames.tbl_fst()</code> for displaying the data.</p></li>
-<li><p>A <code>collect.tbl_fst()</code> method for fetching the entire data frame. (The <code>head()</code> and <code>collect()</code> methods both call <code><a href="http://www.rdocumentation.org/packages/fst/topics/write_fst">fst::read_fst()</a></code>.)</p></li>
+<li><p>A <code>collect.tbl_fst()</code> method for fetching the entire data frame. (The <code>head()</code> and <code><a href="http://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> methods both call <code><a href="http://www.rdocumentation.org/packages/fst/topics/write_fst">fst::read_fst()</a></code>.)</p></li>
 <li><p>A <code>select.tbl_fst()</code> and <code>rename.tbl_fst()</code> method that return a <code>"tbl_fst"</code> object with a modified column list, computed with the help of the <em>tidyselect</em> package.</p></li>
 <li>
 <p>All other dplyr methods for which a <code>data.frame</code> method exists, determined with</p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">grep</span> S3method.*[^_],data.frame dplyr/NAMESPACE</code></pre></div>
-<p>All these methods call <code>collect()</code> on the input and then the <code>data.frame()</code> version. This isn’t foolproof nor fast, but should give a working implementation for most methods with very little effort.</p>
+<p>All these methods call <code><a href="http://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on the input and then the <code>data.frame()</code> version. This isn’t foolproof nor fast, but should give a working implementation for most methods with very little effort.</p>
 </li>
-</ol>
-</div>
-<div id="result" class="section level2">
-<h2 class="hasAnchor">
-<a href="#result" class="anchor"></a>Result</h2>
-<p>So far, only <code>select()</code> and <code>rename()</code> are more efficient than working on data frames. Implementing better versions of the other verbs is now only a matter of diligence. In particular, <code>slice()</code> and <code>filter()</code> should be fairly easy to implement, the latter perhaps with the help of the <a href="https://krlmlr.github.io/bindr/"><em>bindr</em></a> package.</p>
-<p>I have no idea why <code>R CMD check</code> currently gives me S3 method consistency headaches, but I’m pretty sure this is fixable:</p>
+<li>
+<p>Some methods had to be reexported from <em>dplyr</em> to get rid of a <code>R CMD check</code> warning (thanks to Davis Vaughan for the hint):</p>
 <pre><code>checking S3 generic/method consistency ... WARNING
 Warning: declared S3 method 'filter.tbl_fst' not found
 Warning: declared S3 method 'intersect.tbl_fst' not found
@@ -117,6 +112,14 @@ See section ‘Generic functions and methods’ in the ‘Writing R
 Extensions’ manual.
 R CMD check results
 0 errors | 1 warning  | 0 notes</code></pre>
+<p>Reexporting these methods came with the additional benefits of warning about argument name mismatch, and also allows working only with loading <em>fstplyr</em>, so I decided to reexport all <em>dplyr</em> methods.</p>
+</li>
+</ol>
+</div>
+<div id="result" class="section level2">
+<h2 class="hasAnchor">
+<a href="#result" class="anchor"></a>Result</h2>
+<p>So far, only <code>head()</code>, <code>select()</code>, and <code>rename()</code> are more efficient than working on data frames. Implementing versions of the other verbs that operate directly on the <code>.fst</code> file is now only a matter of diligence. In particular, <code><a href="http://dplyr.tidyverse.org/reference/slice.html">slice()</a></code> and <code><a href="http://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> should be fairly easy to implement, the latter perhaps with the help of the <a href="https://krlmlr.github.io/bindr/"><em>bindr</em></a> package.</p>
 </div>
 </div>
   </div>

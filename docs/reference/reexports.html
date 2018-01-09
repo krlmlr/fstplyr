@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Open a directory with .fst files as data source — src_fst • fstplyr</title>
+<title>Objects exported from other packages — reexports • fstplyr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -95,56 +95,23 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Open a directory with .fst files as data source</h1>
+    <h1>Objects exported from other packages</h1>
     </div>
 
     
-    <p>Create a data source to access all <code>.fst</code> files in a directory with
-<span class="pkg">dplyr</span> verbs.</p>
+    <p>These objects are imported from other packages. Follow the links
+below to see their documentation.</p><dl class='dl-horizontal'>
+  <dt>dplyr</dt><dd><p><code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/distinct.html'>distinct</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/do.html'>do</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/setops.html'>intersect</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/pull.html'>pull</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_n</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/setops.html'>setdiff</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/setops.html'>setequal</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/setops.html'>union</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/setops.html'>union_all</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/group_indices.html'>group_indices</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/group_size.html'>group_size</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/groups.html'>groups</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/group_size.html'>n_groups</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/join.html'>anti_join</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/join.html'>full_join</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/join.html'>inner_join</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/join.html'>left_join</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/join.html'>right_join</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/join.html'>semi_join</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/tbl.html'>as.tbl</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/as.tbl_cube.html'>as.tbl_cube</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/compute.html'>collapse</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/compute.html'>compute</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/same_src.html'>same_src</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/tbl_vars.html'>tbl_vars</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/src_tbls.html'>src_tbls</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/compute.html'>collect</a></code></p></dd>
+</dl>
     
 
-    <pre class="usage"><span class='fu'>src_fst</span>(<span class='no'>path</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>path</th>
-      <td><p>An existing directory</p></td>
-    </tr>
-    </table>
-    
+        
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>tempfile</span>()
-<span class='fu'>dir.create</span>(<span class='no'>path</span>)
-<span class='kw pkg'>fst</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/fst/topics/write_fst'>write_fst</a></span>(<span class='no'>iris</span>, <span class='fu'>file.path</span>(<span class='no'>path</span>, <span class='st'>"iris.fst"</span>))
-<span class='kw pkg'>fst</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/fst/topics/write_fst'>write_fst</a></span>(<span class='no'>mtcars</span>, <span class='fu'>file.path</span>(<span class='no'>path</span>, <span class='st'>"mtcars"</span>))
-
-<span class='no'>src</span> <span class='kw'>&lt;-</span> <span class='fu'>src_fst</span>(<span class='no'>path</span>)
-<span class='no'>src</span></div><div class='output co'>#&gt; src:  fst files in /tmp/RtmptwnCB3/file9b37a797328
-#&gt; tbls: iris, mtcars</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='no'>src</span>, <span class='st'>"mtcars"</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 11
-#&gt;      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1  21.0  6.00   160 110    3.90  2.62  16.5  0     1.00  4.00  4.00
-#&gt;  2  21.0  6.00   160 110    3.90  2.88  17.0  0     1.00  4.00  4.00
-#&gt;  3  22.8  4.00   108  93.0  3.85  2.32  18.6  1.00  1.00  4.00  1.00
-#&gt;  4  21.4  6.00   258 110    3.08  3.22  19.4  1.00  0     3.00  1.00
-#&gt;  5  18.7  8.00   360 175    3.15  3.44  17.0  0     0     3.00  2.00
-#&gt;  6  18.1  6.00   225 105    2.76  3.46  20.2  1.00  0     3.00  1.00
-#&gt;  7  14.3  8.00   360 245    3.21  3.57  15.8  0     0     3.00  4.00
-#&gt;  8  24.4  4.00   147  62.0  3.69  3.19  20.0  1.00  0     4.00  2.00
-#&gt;  9  22.8  4.00   141  95.0  3.92  3.15  22.9  1.00  0     4.00  2.00
-#&gt; 10  19.2  6.00   168 123    3.92  3.44  18.3  1.00  0     4.00  4.00
-#&gt; # ... with 22 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

@@ -17,7 +17,7 @@ fst::write_fst(mtcars, file.path(path, "mtcars"))
 library(fstplyr)
 src <- src_fst(path)
 src
-#> src:  fst files in /tmp/RtmpaQCco0/file230872fadfd7
+#> src:  fst files in /tmp/Rtmp9e4Eiy/file32fd14c5a40d
 #> tbls: iris, mtcars
 dplyr::tbl(src, "mtcars")
 #> # A tibble: 32 x 11

@@ -1,4 +1,6 @@
 #' @export
+dplyr::tbl
+#' @export
 tbl.src_fst <- function(src, name, ..., slice = NULL, vars = NULL) {
   if (!(name %in% src_tbls(src))) {
     stop("Table `", name, "` not found!", call. = FALSE)
@@ -14,19 +16,18 @@ head.tbl_fst <- function(x, n = 6L, ...) {
   read_from_meta(x, slice = seq_len(n))
 }
 
-#' @importFrom utils head
 #' @export
 dim.tbl_fst <- function(x) {
   c(x$meta$nrOfRows, length(orig_vars(x)))
 }
 
-#' @importFrom utils head
 #' @export
 dimnames.tbl_fst <- function(x) {
   list(NULL, new_vars(x))
 }
 
-#' @importFrom utils head
+#' @export
+dplyr::collect
 #' @export
 collect.tbl_fst <- function(x, ...) {
   read_from_meta(x)

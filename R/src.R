@@ -22,6 +22,8 @@ src_fst <- function(path) {
 }
 
 #' @export
+dplyr::src_tbls
+#' @export
 src_tbls.src_fst <- function(x) {
   names(x$meta)
 }

@@ -37,10 +37,6 @@ pull.tbl_fst <- function(.data, ...) {
 }
 
 #' @export
-rename.tbl_fst <- function(.data, ...) {
-  rename(collect(.data), ...)
-}
-#' @export
 sample_frac.tbl_fst <- function(.data, ...) {
   sample_frac(collect(.data), ...)
 }

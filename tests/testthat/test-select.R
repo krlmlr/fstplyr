@@ -10,3 +10,10 @@ test_that("can select", {
   expect_identical(tbl %>% select() %>% collect(), tbl %>% collect() %>% select())
   expect_identical(tbl %>% select(a = Species) %>% collect(), tbl %>% collect() %>% select(a = Species))
 })
+
+test_that("can rename", {
+  src <- src_fst("src")
+  tbl <- tbl(src, "iris")
+
+  expect_identical(tbl %>% rename(a = Species) %>% collect(), tbl %>% collect() %>% rename(a = Species))
+})

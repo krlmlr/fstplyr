@@ -5,7 +5,9 @@ Authors@R: person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r
 Description: Provides a basic 'dplyr' interface to 'fst' data sources.
 Imports: 
     dplyr,
-    fst
+    fst,
+    rlang,
+    tidyselect
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

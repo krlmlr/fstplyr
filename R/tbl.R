@@ -20,13 +20,28 @@ dim.tbl_fst <- function(x) {
 
 #' @importFrom utils head
 #' @export
+dimnames.tbl_fst <- function(x) {
+  list(NULL, x$meta$columnNames)
+}
+
+#' @importFrom utils head
+#' @export
 collect.tbl_fst <- function(x, ...) {
   read_from_meta(x)
 }
 
-read_from_meta <- function(x, slice = NULL, vars = NULL) {
+read_from_meta <- function(x, slice = NULL) {
+  vars <- x$vars
   if (is.null(vars)) {
-    vars = x$meta$columnNames
+    vars <- x$meta$columnNames
+  }
+
+  if (length(vars) == 0) {
+    if (is.null(slice)) {
+      return(empty_tibble(nrow(x)))
+    } else {
+      return(empty_tibble(length(slice)))
+    }
   }
 
   if (is.null(slice)) {
@@ -38,4 +53,8 @@ read_from_meta <- function(x, slice = NULL, vars = NULL) {
     data <- data[slice - (start - 1L), , drop = FALSE]
   }
   as_tibble(data)
+}
+
+empty_tibble <- function(nrow) {
+  tibble::new_tibble(list(), nrow = nrow)
 }

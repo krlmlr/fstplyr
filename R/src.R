@@ -1,5 +1,21 @@
+#' Open a directory with .fst files as data source
+#'
+#' Create a data source to access all `.fst` files in a directory with
+#' \pkg{dplyr} verbs.
+#'
+#' @param path An existing directory
+#'
 #' @export
+#' @examples
+#' path <- tempfile()
+#' dir.create(path)
+#' fst::write_fst(iris, file.path(path, "iris.fst"))
+#' fst::write_fst(mtcars, file.path(path, "mtcars"))
+#'
+#' src <- src_fst(path)
+#' tbl(src, "mtcars")
 src_fst <- function(path) {
+  stopifnot(dir.exists(path))
   path <- normalizePath(path, mustWork = TRUE)
   src(subclass = "fst", path = path, meta = get_dir_metadata(path))
 }

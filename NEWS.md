@@ -1,3 +1,9 @@
+# fstplyr 0.1-1
+
+- Reexport all dplyr methods, and the pipe operator.
+- Fix `select()` and `rename()` chains (#1).
+- Fix `colnames()` after `select()`.
+
 # fstplyr 0.1
 
 Initial version.

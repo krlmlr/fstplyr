@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 The timings for the [*fst*](http://www.fstpackage.org/) package looked *very* promising, and I decided to give it a try. When I found out that date-time values are stored, I was sold: I decided to use *fst* instead of SQLite as a storage for medium-sized intermediate data. At the same time I wanted to keep using [*dplyr*](http://dplyr.tidyverse.org/) verbs to access the data.
 
-A dplyr interface is [scheduled](https://github.com/fstpackage/fst/issues/108) for fst 0.9.0, but I didn't want to wait that long. I decided to implement the bare minimum that was necessary to grab columns of my choice from a `.fst` file, and perhaps allow easy access to all `.fst` files in a directory. The result is version 0.1 of the *fstplyr* package.
+A dplyr interface is [scheduled](https://github.com/fstpackage/fst/issues/108) for fst 0.9.0, but I didn't want to wait that long. I decided to implement the bare minimum that was necessary to grab columns of my choice from a `.fst` file, and perhaps allow easy access to all `.fst` files in a directory. The result is version 0.1-1 of the *fstplyr* package.
 
 ## Recipe
 

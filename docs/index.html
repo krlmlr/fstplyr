@@ -87,8 +87,8 @@
 <a href="#example" class="anchor"></a>Example</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path &lt;-<span class="st"> </span><span class="kw">tempfile</span>()
 <span class="kw">dir.create</span>(path)
-fst<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/fst/topics/write_fst">write_fst</a></span>(iris, <span class="kw">file.path</span>(path, <span class="st">"iris.fst"</span>))
-fst<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/fst/topics/write_fst">write_fst</a></span>(mtcars, <span class="kw">file.path</span>(path, <span class="st">"mtcars"</span>))
+fst::<span class="kw">write_fst</span>(iris, <span class="kw">file.path</span>(path, <span class="st">"iris.fst"</span>))
+fst::<span class="kw">write_fst</span>(mtcars, <span class="kw">file.path</span>(path, <span class="st">"mtcars"</span>))
 
 <span class="kw">library</span>(fstplyr)
 <span class="co">#&gt; </span>
@@ -101,10 +101,10 @@ fst<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 src &lt;-<span class="st"> </span><span class="kw"><a href="reference/src_fst.html">src_fst</a></span>(path)
 src
-<span class="co">#&gt; src:  fst files in /tmp/RtmpiEtAzC/file4528fb8d76</span>
+<span class="co">#&gt; src:  fst files in /tmp/RtmpEaYsVw/file31023efbde4b</span>
 <span class="co">#&gt; tbls: iris, mtcars</span>
-<span class="kw"><a href="http://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span>(src, <span class="st">"mtcars"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(mpg<span class="op">:</span>wt, <span class="op">-</span>drat, gear)
+<span class="kw"><a href="http://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span>(src, <span class="st">"mtcars"</span>) %&gt;%
+<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(mpg:wt, -drat, gear)
 <span class="co">#&gt; # A tibble: 32 x 6</span>
 <span class="co">#&gt;      mpg   cyl  disp    hp    wt  gear</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -124,7 +124,7 @@ src
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("remotes")</span>
-remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"krlmlr/fstplyr"</span>)</code></pre></div>
+remotes::<span class="kw">install_github</span>(<span class="st">"krlmlr/fstplyr"</span>)</code></pre></div>
 </div>
 </div>
 </div>

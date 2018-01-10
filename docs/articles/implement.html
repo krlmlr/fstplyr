@@ -75,14 +75,14 @@
       <h1>Impementing a dplyr backend from scratch</h1>
                         <h4 class="author">Kirill Müller</h4>
             
-            <h4 class="date">2018-01-09</h4>
+            <h4 class="date">2018-01-10</h4>
           </div>
 
     
     
 <div class="contents">
 <p>The timings for the <a href="http://www.fstpackage.org/"><em>fst</em></a> package looked <em>very</em> promising, and I decided to give it a try. When I found out that date-time values are stored, I was sold: I decided to use <em>fst</em> instead of SQLite as a storage for medium-sized intermediate data. At the same time I wanted to keep using <a href="http://dplyr.tidyverse.org/"><em>dplyr</em></a> verbs to access the data.</p>
-<p>A dplyr interface is <a href="https://github.com/fstpackage/fst/issues/108">scheduled</a> for fst 0.9.0, but I didn’t want to wait that long. I decided to implement the bare minimum that was necessary to grab columns of my choice from a <code>.fst</code> file, and perhaps allow easy access to all <code>.fst</code> files in a directory. The result is version 0.1 of the <em>fstplyr</em> package.</p>
+<p>A dplyr interface is <a href="https://github.com/fstpackage/fst/issues/108">scheduled</a> for fst 0.9.0, but I didn’t want to wait that long. I decided to implement the bare minimum that was necessary to grab columns of my choice from a <code>.fst</code> file, and perhaps allow easy access to all <code>.fst</code> files in a directory. The result is version 0.1-1 of the <em>fstplyr</em> package.</p>
 <div id="recipe" class="section level2">
 <h2 class="hasAnchor">
 <a href="#recipe" class="anchor"></a>Recipe</h2>
@@ -97,7 +97,7 @@
 <li><p>A <code>select.tbl_fst()</code> and <code>rename.tbl_fst()</code> method that return a <code>"tbl_fst"</code> object with a modified column list, computed with the help of the <em>tidyselect</em> package.</p></li>
 <li>
 <p>All other dplyr methods for which a <code>data.frame</code> method exists, determined with</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">grep</span> S3method.*[^_],data.frame dplyr/NAMESPACE</code></pre></div>
+<pre class="sh"><code>grep S3method.*[^_],data.frame dplyr/NAMESPACE</code></pre>
 <p>All these methods call <code><a href="http://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> on the input and then the <code>data.frame()</code> version. This isn’t foolproof nor fast, but should give a working implementation for most methods with very little effort.</p>
 </li>
 <li>

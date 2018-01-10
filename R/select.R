@@ -12,6 +12,7 @@ select.tbl_fst <- function(.data, ...) {
 dplyr::rename
 #' @export
 rename.tbl_fst <- function(.data, ...) {
+  # Pass via splicing to avoid matching vars_rename() arguments
   vars <- tidyselect::vars_rename(tbl_vars(.data), !!! quos(...))
   .data$vars <- update_vars(vars_to_dict(.data), vars)
   .data

@@ -24,7 +24,7 @@ test_that("can rename", {
   src <- src_fst("src")
   tbl <- tbl(src, "iris")
 
-  expect_identical(tbl %>% rename(a = Species) %>% collect(), tbl %>% collect() %>% rename(a = Species))
+  expect_identical(tbl %>% rename(a = Species) %>% collect(), tbl %>% collect() %>% select(everything(), a = Species))
   expect_identical(
     tbl %>%
       rename(a = Species, b = Petal.Width) %>%
@@ -32,7 +32,7 @@ test_that("can rename", {
       collect(),
     tbl %>%
       collect() %>%
-      rename(b = Petal.Width, c = Species, d = Petal.Length)
+      select(Sepal.Length, Sepal.Width, d = Petal.Length, b = Petal.Width, c = Species)
   )
 })
 

@@ -136,7 +136,7 @@ group_size.tbl_fst <- function(x) {
 dplyr::groups
 #' @export
 groups.tbl_fst <- function(x) {
-  groups(x)
+  NULL
 }
 
 #' @export

@@ -1,3 +1,8 @@
+## fstplyr 0.1-2 (2018-01-12)
+
+- Fix endless recursion in `groups()`.
+
+
 # fstplyr 0.1-1
 
 - Reexport all dplyr methods, and the pipe operator.

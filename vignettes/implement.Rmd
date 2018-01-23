@@ -1,5 +1,5 @@
 ---
-title: "Impementing a dplyr backend from scratch"
+title: "Implementing a dplyr backend from scratch"
 author: "Kirill Müller"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

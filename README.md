@@ -27,7 +27,7 @@ library(fstplyr)
 #>     intersect, setdiff, setequal, union
 src <- src_fst(path)
 src
-#> src:  fst files in /tmp/RtmpBbvo3X/file30ab250d15d6
+#> src:  fst files in /tmp/RtmpaVVOLY/file321750ba4185
 #> tbls: iris, mtcars
 tbl(src, "mtcars") %>%
   select(mpg:wt, -drat, gear)

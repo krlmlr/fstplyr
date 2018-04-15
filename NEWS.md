@@ -1,4 +1,9 @@
-## fstplyr 0.1-2 (2018-01-12)
+# fstplyr 0.1.2.9000 (2018-04-16)
+
+- `as.data.frame()` now works on `tbl_fst` objects (#8).
+
+
+# fstplyr 0.1-2 (2018-01-12)
 
 - Fix endless recursion in `groups()`.
 

@@ -1,7 +1,7 @@
 Package: fstplyr
 Title: A 'dplyr' Interface to 'fst'
-Version: 0.1-2
-Date: 2018-01-12
+Version: 0.1.2.9000
+Date: 2018-04-16
 Authors@R: person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
 Description: Provides a basic 'dplyr' interface to 'fst' data sources.
 License: GPL-3

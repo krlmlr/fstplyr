@@ -2,6 +2,7 @@
 
 S3method(anti_join,tbl_fst)
 S3method(arrange,tbl_fst)
+S3method(as.data.frame,tbl_fst)
 S3method(as.tbl,tbl_fst)
 S3method(as.tbl_cube,tbl_fst)
 S3method(collapse,tbl_fst)

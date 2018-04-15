@@ -201,6 +201,11 @@ semi_join.tbl_fst <- function(x, y, ...) {
 # Coercion ----------------------------------------------------------------
 
 #' @export
+as.data.frame.tbl_fst <- function(x, ...) {
+  as.data.frame(collect(x), ...)
+}
+
+#' @export
 dplyr::as.tbl
 #' @export
 as.tbl.tbl_fst <- function(x, ...) {

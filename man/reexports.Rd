@@ -19,6 +19,7 @@
 \alias{summarise}
 \alias{union}
 \alias{union_all}
+\alias{group_vars}
 \alias{group_by}
 \alias{group_indices}
 \alias{group_size}
@@ -31,7 +32,7 @@
 \alias{left_join}
 \alias{right_join}
 \alias{semi_join}
-\alias{as.tbl}
+\alias{as_tibble}
 \alias{as.tbl_cube}
 \alias{collapse}
 \alias{compute}
@@ -50,6 +51,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{do}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{intersect}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{sample_frac}}, \code{\link[dplyr]{sample_n}}, \code{\link[dplyr]{setdiff}}, \code{\link[dplyr]{setequal}}, \code{\link[dplyr]{slice}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{union}}, \code{\link[dplyr]{union_all}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{group_indices}}, \code{\link[dplyr]{group_size}}, \code{\link[dplyr]{groups}}, \code{\link[dplyr]{n_groups}}, \code{\link[dplyr]{ungroup}}, \code{\link[dplyr]{anti_join}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{semi_join}}, \code{\link[dplyr]{as.tbl}}, \code{\link[dplyr]{as.tbl_cube}}, \code{\link[dplyr]{collapse}}, \code{\link[dplyr]{compute}}, \code{\link[dplyr]{same_src}}, \code{\link[dplyr]{tbl_vars}}, \code{\link[dplyr]{\%>\%}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{src_tbls}}, \code{\link[dplyr]{tbl}}, \code{\link[dplyr]{collect}}}
+  \item{cubelyr}{\code{\link[cubelyr]{as.tbl_cube}}}
+
+  \item{dplyr}{\code{\link[dplyr:reexports]{\%>\%}}, \code{\link[dplyr:filter-joins]{anti_join}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr:reexports]{as_tibble}}, \code{\link[dplyr:compute]{collapse}}, \code{\link[dplyr:compute]{collect}}, \code{\link[dplyr]{compute}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{do}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr:mutate-joins]{full_join}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr:group_data]{group_indices}}, \code{\link[dplyr:group_data]{group_size}}, \code{\link[dplyr:group_data]{group_vars}}, \code{\link[dplyr:group_data]{groups}}, \code{\link[dplyr:mutate-joins]{inner_join}}, \code{\link[dplyr:reexports]{intersect}}, \code{\link[dplyr:mutate-joins]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr:group_data]{n_groups}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr:mutate-joins]{right_join}}, \code{\link[dplyr]{same_src}}, \code{\link[dplyr:sample_n]{sample_frac}}, \code{\link[dplyr]{sample_n}}, \code{\link[dplyr]{select}}, \code{\link[dplyr:filter-joins]{semi_join}}, \code{\link[dplyr:reexports]{setdiff}}, \code{\link[dplyr:reexports]{setequal}}, \code{\link[dplyr]{slice}}, \code{\link[dplyr]{src_tbls}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{tbl}}, \code{\link[dplyr]{tbl_vars}}, \code{\link[dplyr:group_by]{ungroup}}, \code{\link[dplyr:reexports]{union}}, \code{\link[dplyr:setops]{union_all}}}
 }}
 

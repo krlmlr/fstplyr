@@ -53,15 +53,15 @@ pull.tbl_fst <- function(.data, ...) {
 #' @export
 dplyr::sample_frac
 #' @export
-sample_frac.tbl_fst <- function(tbl, size, replace, weight, .env) {
-  sample_frac(collect(tbl), size, replace, weight, .env)
+sample_frac.tbl_fst <- function(tbl, size, replace, weight, .env, ...) {
+  sample_frac(collect(tbl), size, replace, weight, .env, ...)
 }
 
 #' @export
 dplyr::sample_n
 #' @export
-sample_n.tbl_fst <- function(tbl, size, replace, weight, .env) {
-  sample_n(collect(tbl), size, replace, weight, .env)
+sample_n.tbl_fst <- function(tbl, size, replace, weight, .env, ...) {
+  sample_n(collect(tbl), size, replace, weight, .env, ...)
 }
 
 #' @export
@@ -108,8 +108,14 @@ union_all.tbl_fst <- function(x, y, ...) {
 }
 
 
-
 # Grouping ----------------------------------------------------------------
+
+#' @export
+dplyr::group_vars
+#' @export
+group_vars.tbl_fst <- function(x) {
+  group_vars(collect(x))
+}
 
 #' @export
 dplyr::group_by
@@ -206,14 +212,14 @@ as.data.frame.tbl_fst <- function(x, ...) {
 }
 
 #' @export
-dplyr::as.tbl
+dplyr::as_tibble
 #' @export
-as.tbl.tbl_fst <- function(x, ...) {
-  as.tbl(collect(x), ...)
+as_tibble.tbl_fst <- function(x, ...) {
+  as_tibble(collect(x), ...)
 }
 
 #' @export
-dplyr::as.tbl_cube
+cubelyr::as.tbl_cube
 #' @export
 as.tbl_cube.tbl_fst <- function(x, ...) {
   as.tbl_cube(collect(x), ...)

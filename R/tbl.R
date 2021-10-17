@@ -45,12 +45,27 @@ read_from_meta <- function(x, slice = NULL) {
   }
 
   if (is.null(slice)) {
-    data <- read_fst(x$meta$path, columns = vars)
+
+    data <- read_fst(x$meta$path,
+                     columns = vars,
+                     as.data.table = TRUE)
+
   } else {
+
+    # set range for slice
     start <- min(slice)
     end <- max(slice)
-    data <- read_fst(x$meta$path, from = start, to = end, columns = vars)
-    data <- data[slice - (start - 1L), , drop = FALSE]
+
+    # read whole range
+    data <- read_fst(x$meta$path,
+                     from = start,
+                     to = end,
+                     columns = vars,
+                     as.data.table = TRUE)
+
+    # subset range, adjusted for starting point
+    data <- data[slice - (start - 1L), ,
+                 drop = FALSE]
   }
 
   new_names <- new_vars(x)
@@ -59,7 +74,8 @@ read_from_meta <- function(x, slice = NULL) {
     names(data)[new_names_idx] <- new_names[new_names_idx]
   }
 
-  tibble::as_tibble(data)
+  return(data)
+
 }
 
 empty_tibble <- function(nrow) {

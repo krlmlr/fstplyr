@@ -29,8 +29,9 @@ dimnames.tbl_fst <- function(x) {
 #' @export
 dplyr::collect
 #' @export
-collect.tbl_fst <- function(x, ...) {
-  read_from_meta(x)
+collect.tbl_fst <- function(x, slice = NULL, ...) {
+  read_from_meta(x,
+                 slice = slice)
 }
 
 read_from_meta <- function(x, slice = NULL) {

@@ -44,13 +44,6 @@ mutate.tbl_fst <- function(.data, ...) {
 }
 
 #' @export
-dplyr::pull
-#' @export
-pull.tbl_fst <- function(.data, ...) {
-  pull(collect(.data), ...)
-}
-
-#' @export
 dplyr::sample_frac
 #' @export
 sample_frac.tbl_fst <- function(tbl, size, replace, weight, .env, ...) {

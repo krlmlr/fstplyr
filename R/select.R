@@ -31,3 +31,10 @@ simplify_vars <- function(dict) {
   names(dict)[dict == names(dict)] <- ""
   dict
 }
+
+#' @export
+dplyr::pull
+#' @export
+pull.tbl_fst <- function(.data, ...) {
+  unclass(collect(select(.data, ...)))[[1]]
+}

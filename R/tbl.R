@@ -26,6 +26,7 @@ dimnames.tbl_fst <- function(x) {
   list(NULL, new_vars(x))
 }
 
+#' @import data.table
 #' @export
 dplyr::collect
 #' @export

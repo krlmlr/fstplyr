@@ -21,3 +21,19 @@ slice.tbl_fst <- function(.data, ...) {
   } else stop("Row indices must be exclusively positive or negative.")
 
 }
+
+#' @export
+slice_dates <- function(.data,
+                        effective = "1900-01-01",
+                        expiry = "9000-12-31") {
+
+  dates_dt <- .data %>%
+    select(ETL_END_EFF_DTS,
+           ETL_END_EXP_DTS) %>%
+    collect()
+
+  .data %>%
+    slice(dates_dt[ETL_END_EFF_DTS >= effective & ETL_END_EXP_DTS < expiry,
+                   which = TRUE])
+
+}

@@ -10,7 +10,6 @@
 \alias{filter}
 \alias{intersect}
 \alias{mutate}
-\alias{pull}
 \alias{sample_frac}
 \alias{sample_n}
 \alias{setdiff}
@@ -40,6 +39,7 @@
 \alias{\%>\%}
 \alias{select}
 \alias{rename}
+\alias{pull}
 \alias{slice}
 \alias{src_tbls}
 \alias{tbl}

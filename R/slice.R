@@ -23,17 +23,31 @@ slice.tbl_fst <- function(.data, ...) {
 }
 
 #' @export
-slice_dates <- function(.data,
-                        effective = "1900-01-01",
-                        expiry = "9000-12-31") {
+slice_endorsements <- function(.data,
+                               effective = "1900-01-01",
+                               expiry = "9000-12-31",
+                               include_inforce = TRUE) {
 
-  dates_dt <- .data %>%
-    select(ETL_END_EFF_DTS,
-           ETL_END_EXP_DTS) %>%
-    collect()
+  dates_dt <- collect(select(.data,
+                             ETL_END_EFF_DTS,
+                             ETL_END_EXP_DTS))
 
-  .data %>%
-    slice(dates_dt[ETL_END_EFF_DTS >= effective & ETL_END_EXP_DTS < expiry,
-                   which = TRUE])
+  if (!include_inforce) {
+
+    index <- data.table:::`[.data.table`(dates_dt,
+                                         ETL_END_EFF_DTS >= effective &
+                                           ETL_END_EXP_DTS < expiry,
+                                         which = TRUE)
+
+  } else if (include_inforce) {
+
+    index <- data.table:::`[.data.table`(dates_dt,
+                                         ETL_END_EXP_DTS > effective &
+                                           ETL_END_EFF_DTS < expiry,
+                                         which = TRUE)
+
+  } else stop("include_inforce must be a logical.")
+
+  slice(.data, index)
 
 }
